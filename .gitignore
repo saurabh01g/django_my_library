@@ -1,0 +1,6 @@
+book/__pycache__/
+book/management/commands/__pycache__/
+book/migrations/__pycache__/
+book/views/__pycache__/
+my_Library/__pycache__/
+my_Library/.env

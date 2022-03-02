@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<h1>Book Form</h1>
+<form method="post">
+{% csrf_token %}
+
+{% if messages %}
+<ul class="messages">
+  {% for message in messages %}
+  <div class="alert {{ message.tags }} alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    {{ message }}
+  </div>
+{% endfor %}
+  </ul>
+{% endif %}
+
+  {{form | crispy}}
+
+
+  <button type="submit" class="btn btn-primary">Sign in</button>
+</form>
+{% endblock %}

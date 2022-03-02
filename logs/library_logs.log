@@ -1,0 +1,7 @@
+[02-03-2022 22:28:07] [WARNING] : Homepage was accessed at 2022-03-02 22:28:07.649388 hours!
+[02-03-2022 22:28:15] [INFO] : Inside show_all_active_books view
+[02-03-2022 22:28:19] [INFO] : Inside show_all_inactive_books view
+[02-03-2022 22:40:02] [WARNING] : Homepage was accessed at 2022-03-02 22:40:02.711673 hours!
+[02-03-2022 22:45:07] [WARNING] : Homepage was accessed at 2022-03-02 22:45:07.200423 hours!
+[02-03-2022 22:45:10] [INFO] : In homepage view for New Book Entry 
+[02-03-2022 22:45:10] [WARNING] : Either one or more fields are entered empty:  BookName- Price- Quantity-

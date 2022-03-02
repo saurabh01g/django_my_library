@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>My Library home</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="container">
+            <img src="/media/lib.jpg" alt="my library image"width =400>           
+
+            <h2>Book Entry Form</h2>
+            <hr>
+            <form action="{% url 'homepage' %}" method="post">
+                {% csrf_token %}
+                <form class="row g-3">
+                    
+                    {% if single_book %}                                <!-- during edit book record; book Id readonly visible  -->
+                    <div class="col-md-3">
+                        <label  class="form-label">Book ID :</label>
+                        <input type="number" class="form-control" name="bid" value="{{single_book.id}}" readonly>
+                    </div>
+                    {% endif %}
+
+                    <div class="col-md-3">
+                        <label  class="form-label">Book Name :</label>
+                        <input type="text" class="form-control" name="bname" value="{{single_book.name}}" placeholder="Enter book name here.">
+                    </div>
+
+                    <div class="col-md-3">
+                        <label class="form-label">Book Price :</label>
+                        <input type="number" class="form-control" name="bprice" value="{{single_book.price}}" placeholder="Enter price here.">
+                    </div>
+
+                    <div class="col-md-3">
+                        <label class="form-label">Book Quantity :</label>
+                        <input type="number" class="form-control" name="bqty" value="{{single_book.qty}}" placeholder="Enter book quantity here.">
+                    </div>
+                    <br>
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </form>
+            <br>
+            <a href="{% url 'show_all_active_books' %}" class="btn btn-info">Show Books</a> &nbsp; &nbsp; &nbsp;
+            <a href="{% url 'show_all_inactive_books' %}" class="btn btn-warning">Show Soft deleted Books</a>
+            
+            <br>
+            <br>
+            <a href="{% url 'feedback_form' %}" >feedback form</a> &nbsp; &nbsp;
+            <a href="{% url 'book_model_form' %}">Book Model Form</a> &nbsp; &nbsp;
+            <a href="{% url 'address_form' %}">Address Form</a> <br>
+            <a href="{% url 'contact_form' %}">Conatct Form</a>
+        </div>
+
+    </body>
+</html>
+

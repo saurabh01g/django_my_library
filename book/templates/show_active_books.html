@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Active Book record</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    </head>
+    <body>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-2">
+                    <h4> <a href="{% url 'homepage' %}">Home</a> </h4>
+                </div>
+                <div class="col-4">
+                    <h4> <a href="{% url 'show_all_inactive_books' %}">View Inactive Books</a> </h4>
+                </div>
+                
+            </div>    
+            <hr>
+            <h2>All Active Book record</h2>
+
+            <table  style="width: 60%;" class="table table-striped">
+                <thead>
+                    <tr class="bg-info">
+                    <th scope="col">Book ID</th>
+                    <th scope="col">Book Name</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                {% for book in books %}
+                <tr>
+                    <td>{{book.id}}</td>
+                    <td>{{book.name}}</td>
+                    <td>{{book.price}}</td>
+                    <td>{{book.qty}}</td>
+                    <td>
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <a href="{% url 'edit' book.id %}" class="btn btn-primary">Edit</a>
+                            </div>
+                            <div class="col-sm-4">
+                                <form action="{% url 'delete' book.id %}" method="post">
+                                {% csrf_token %}
+                                <input type="submit" value="Hard Delete" class="btn btn-danger">
+                                </form>
+                            </div>
+                            <div class="col-sm-6">  
+                                <form action="{% url 'soft_delete' book.id %}" method="post">
+                                {% csrf_token %}
+                                <input type="submit" value="Soft Delete" class="btn btn-warning">
+                                </form>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+            <hr>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-2">
+                    <form action="{% url 'delete_all_data' %}" method="post">
+                        {% csrf_token %}
+                        <input type="submit" value="Delete all records" class="btn btn-danger">
+                    </form>
+                </div>
+            <div class="col-2">
+                    <form action="{% url 'soft_delete_all_data' %}" method="post">
+                        {% csrf_token %}
+                        <input type="submit" value="soft Delete all records" class="btn btn-warning">
+                    </form>
+            </div>
+            </div>
+        </div>
+
+
+    </body>
+</html>
+
